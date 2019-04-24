@@ -115,13 +115,13 @@ export default {
   }),
 
   mounted () {
-    this.$http.get('http://localhost:7071/api/players')
+    this.$http.get(process.env.API_BASE + '/api/players')
       .then( res => { 
         this.topPlayerChart.chartData.labels = _.orderBy(res.data, ['total'], ['desc']).splice(0,5).map((k) => { return k.id }) 
         this.topPlayerChart.chartData.series = [_.orderBy(res.data, ['total'], ['desc']).splice(0,5).map((k) => { return k.total })]
         this.homeRunLeader = _.orderBy(res.data, ['stats.hr'], ['desc']).splice(0,1).map((k) => { return { name: k.id, value: k.stats.hr }})
         })
-    this.$http.get('http://localhost:7071/api/users')
+    this.$http.get(process.env.API_BASE + '/api/users')
       .then( res => {
         this.topUsersChart.items = _.orderBy(res.data, ['total'], ['desc']).splice(0,3)
         })
