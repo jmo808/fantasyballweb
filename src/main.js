@@ -17,7 +17,7 @@ import i18n from '@/i18n'
 import router from '@/router'
 import store from '@/store'
 
-const token = localStorage.getItem('token')
+const token = localStorage.token
 if (token) {
   Vue.prototype.$http.defaults.headers.common['Authorization'] = token
 }

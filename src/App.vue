@@ -19,8 +19,9 @@
 
 export default {
   created () {
-    this.$http.get('/.auth/me')
-    .then(response => { localStorage.token = 'Bearer ' + response.data[0].access_token })
+      this.$http.get('/.auth/me')
+        .then(response => { 
+          localStorage.token = 'Bearer ' + response.data[0].access_token })
   }
 }
 </script>
