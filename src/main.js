@@ -16,17 +16,14 @@ import App from './App'
 import i18n from '@/i18n'
 import router from '@/router'
 import store from '@/store'
-import AuthService from '@/msal'
 
-const token = localStorage.getItem('token')
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-}
+const token = this.$http.get('/.auth/me').then(response => response.data[0].access_token)
+
+Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer' + token
 
 // Sync store with router
 sync(store, router)
 
-Vue.prototype.$authService = new AuthService()
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
