@@ -16,8 +16,9 @@ import App from './App'
 import i18n from '@/i18n'
 import router from '@/router'
 import store from '@/store'
-
-const token = this.$http.get('/.auth/me').then(response => response.data[0].access_token)
+let token = ''
+this.$http.get('/.auth/me')
+  .then(response => { token = response.data[0].access_token })
 
 Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer' + token
 
