@@ -20,6 +20,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
   
-- task: ArchiveFiles@2
+- task: PublishBuildArtifacts@1
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    ArtifactName: 'drop'
