@@ -245,9 +245,9 @@ export default {
     }
   },
   mounted () {
-    this.$http.get(process.env.API_BASE + '/api/users')
+    this.$http.get('https://fantasyslofunc.azurewebsites.net/api/users')
       .then(res => { this.userData = res.data })
-    this.$http.get(process.env.API_BASE + 'api/players')
+    this.$http.get('https://fantasyslofunc.azurewebsites.net/api/players')
       .then(res => { this.playerData = res.data })
   },
   methods: {
@@ -259,7 +259,7 @@ export default {
     deleteItem (item) {
       const index = this.userData.indexOf(item)
       confirm('Are you sure you want to delete this item?') && this.userData.splice(index, 1)
-      this.$http.delete(process.env.API_BASE + '/api/users/1/' + item.id)
+      this.$http.delete('https://fantasyslofunc.azurewebsites.net/api/users/1/' + item.id)
     },
     close () {
       this.dialog = false
@@ -289,7 +289,7 @@ export default {
       this.close()
     },
     sendFormData (item) {
-      this.$http.post(process.env.API_BASE + '/api/users/1/' + item.id, item)
+      this.$http.post('https://fantasyslofunc.azurewebsites.net/api/users/1/' + item.id, item)
     },
     totalScore (item) {
       return item.roster.player1.score +

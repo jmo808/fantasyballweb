@@ -115,8 +115,8 @@ export default {
   }),
 
   mounted () {
-    const API_PLAYERS_URL = process.env.API_BASE + '/api/players';
-    const API_USERS_URL = process.env.API_BASE + '/api/users';
+    const API_PLAYERS_URL = 'https://fantasyslofunc.azurewebsites.net/api/players';
+    const API_USERS_URL = 'https://fantasyslofunc.azurewebsites.net/api/users';
     this.$http.get(API_PLAYERS_URL)
       .then( res => { 
         this.topPlayerChart.chartData.labels = _.orderBy(res.data, ['total'], ['desc']).splice(0,5).map((k) => { return k.id }) 
