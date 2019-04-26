@@ -18,5 +18,21 @@
 <script>
 
 export default {
+  created () {
+    this.$http.get('/.auth/me')
+      .then(response => { localStorage.token = 'Bearer ' + response.data[0].access_token 
+        Vue.prototype.$http.defaults.headers.common['Authorization'] = token})
+    this.$http.interceptors.response.use(undefined, function (err) {
+      return new Promise(function (resolve, reject) {
+        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+          this.$http.get('/.auth/refresh')
+            .then(response => {
+              localStorage.token = 'Bearer ' + response.data[0].access_token })
+            .catch(this.$http.get('/.auth/login/aad'))
+        }
+      throw err
+    })
+  })
+  }
 } 
 </script>
