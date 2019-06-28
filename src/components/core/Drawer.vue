@@ -89,7 +89,7 @@ export default {
         text: 'Users'
       }
     ],
-    responsive: false
+    responsive: true
   }),
   computed: {
     ...mapState('app', ['image', 'color']),
