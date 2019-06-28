@@ -71,7 +71,7 @@ import {
 
 export default {
   data: () => ({
-    logo: './img/vuetifylogo.png',
+    logo: './img/spnlogo.png',
     links: [
       {
         to: '/dashboard',
