@@ -18,7 +18,7 @@
 <script>
 
 export default {
-  beforeCreated () {
+  beforeCreate () {
     this.$http.get('/.auth/me')
       .then(response => { localStorage.token = 'Bearer ' + response.data[0].access_token 
         this.$http.defaults.headers.common['Authorization'] = localStorage.token})
