@@ -34,15 +34,6 @@
         </v-list-tile>
         <v-divider/>
         <v-list-tile
-          v-if="responsive"
-        >
-          <v-text-field
-            class="purple-input search-input"
-            label="Search..."
-            color="purple"
-          />
-        </v-list-tile>
-        <v-list-tile
           v-for="(link, i) in links"
           :key="i"
           :to="link.to"
