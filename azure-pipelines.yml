@@ -11,6 +11,8 @@ pool:
 
 steps:
 - task: NodeTool@0
+  env:
+    VUE_APP_ROOT_API: 'https://spnfantasyfunc.azurewebsites.net'
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
