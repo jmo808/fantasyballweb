@@ -245,9 +245,9 @@ export default {
     }
   },
   mounted () {
-    this.$http.get(rootApi + '/api/users')
+    this.$http.get(process.env.VUE_APP_ROOT_API + '/api/users')
       .then(res => { this.userData = res.data })
-    this.$http.get(rootApi + '/api/players')
+    this.$http.get(process.env.VUE_APP_ROOT_API + '/api/players')
       .then(res => { this.playerData = res.data })
   },
   methods: {
@@ -259,7 +259,7 @@ export default {
     deleteItem (item) {
       const index = this.userData.indexOf(item)
       confirm('Are you sure you want to delete this item?') && this.userData.splice(index, 1)
-      this.$http.delete(rootApi + '/api/users/1/' + item.id)
+      this.$http.delete(process.env.VUE_APP_ROOT_API + '/api/users/1/' + item.id)
     },
     close () {
       this.dialog = false
@@ -289,7 +289,7 @@ export default {
       this.close()
     },
     sendFormData (item) {
-      this.$http.post(rootApi + '/api/users/1/' + item.id, item)
+      this.$http.post(process.env.VUE_APP_ROOT_API + '/api/users/1/' + item.id, item)
     },
     totalScore (item) {
       return item.roster.player1.score +
