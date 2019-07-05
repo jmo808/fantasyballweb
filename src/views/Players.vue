@@ -174,7 +174,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get(process.env.ROOT_API + '/api/players')
+    this.$http.get(rootApi + '/api/players')
       .then(res => { this.playerData = res.data })
   },
   methods: {
@@ -186,7 +186,7 @@ export default {
     deleteItem (item) {
       const index = this.playerData.indexOf(item)
       confirm('Are you sure you want to delete this item?') && this.playerData.splice(index, 1)
-      this.$http.delete(process.env.ROOT_API + '/api/players/1/' + item.id)
+      this.$http.delete(rootApi + '/api/players/1/' + item.id)
     },
     close () {
       this.dialog = false
@@ -208,7 +208,7 @@ export default {
       this.close()
     },
     sendFormData (item) {
-      this.$http.post(process.env.ROOT_API + '/api/players/1/' + item.id, item)
+      this.$http.post(rootApi + '/api/players/1/' + item.id, item)
     }
   }
 }
